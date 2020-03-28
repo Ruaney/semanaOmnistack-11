@@ -1,5 +1,5 @@
 const express = require('express')
-
+const {celebrate, Segments, Joi} = require('celebrate');
 const OngController = require('./Controllers/OngController')
 const IncidentController = require('./Controllers/IncidentController')
 const ProfileController = require('./Controllers/ProfileController')
@@ -10,7 +10,7 @@ const routes = express.Router();
 routes.post('/sessions', SessionController.create)
 
 routes.get('/ongs', OngController.index);
-routes.post('/ongs', OngController.create);
+routes.post('/ongs', celebrate,OngController.create);
 
 routes.get('/profile', ProfileController.index)
 
